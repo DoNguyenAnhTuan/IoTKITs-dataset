@@ -1,66 +1,103 @@
-```md
-# IoTKITs Dataset
+# IoTKITs: A Novel Dataset for IoT Education Kit Recognition
 
-**IoTKITs** is a novel, well-annotated dataset designed for identifying and classifying educational IoT kits, including Arduino, Raspberry Pi, ESP32, and more. It enables benchmarking of object detection models in educational and embedded system contexts.
+> **Authors**: Thanh-Thien Nguyen, Anh-Tuan Nguyen Do, Duc-Lung Vu
+> **Paper**: [ScienceDirect - Data in Brief, June 2025](https://doi.org/10.1016/j.dib.2025.111650)
+> **Dataset DOI**: [10.17632/x5thzmkxhy.1](https://data.mendeley.com/datasets/x5thzmkxhy/1)
 
-## 📂 Dataset Overview
+---
 
-- **Total Images**: 3,200 RGB images (640×640)
-- **Classes**: 32 IoT kit types (e.g., Arduino Uno, ESP32, Raspberry Pi, Jetson Nano)
-- **Annotation Format**: Polygon-based labels (JSON or YOLO format)
-- **Sources**: Kaggle, Roboflow Universe, custom photos
-- **Use case**: Object detection, classification, STEM education AI projects
+## 📦 Dataset Overview
 
-## 🧪 Benchmark Results
+**IoTKITs** is a well-annotated dataset created specifically for the recognition and classification of **IoT education kits**, including devices like Arduino, ESP32, Raspberry Pi, Jetson Nano, and others commonly used in STEM education.
 
-| Model       | mAP@50 | mAP@50–95 | Params (G) |
-|-------------|--------|-----------|------------|
-| YOLOv5      | 0.991  | 0.954     | 0.07       |
-| YOLOv7      | 0.987  | 0.956     | 0.37       |
-| Faster R-CNN| 0.966  | 0.901     | 0.43       |
-| SSD         | 0.929  | 0.750     | 0.27       |
+* 🖼️ **Images**: 3,200 high-resolution RGB images
+* 🧷 **Annotations**: JSON format using polygonal masks (via Roboflow)
+* 🧠 **Classes**: 32 KIT types (Arduino Uno, Mega2560, ESP8266, Raspberry Pi 5, STM32, etc.)
+* 🧪 **Image dimensions**: All resized to 640×640 px for model training
+* 🧭 **Sources**: Kaggle, Roboflow Universe, and original photographs
 
-## 📦 Folder Structure
+---
 
-- `images/` – Dataset images
-- `annotations/` – Labels (polygon or YOLO)
-- `examples/` – Sample annotated images
-- `download_links.txt` – (Optional) Link to Mendeley/Drive for full dataset
+## 🎯 Goals and Motivation
+
+While existing PCB datasets focus on components or industrial boards, **IoTKITs** addresses a crucial gap: *complete IoT kit recognition for educational purposes*. The dataset supports the training and benchmarking of object detection models tailored for embedded and classroom environments.
+
+### Key Contributions:
+
+* Rich dataset of full IoT boards used in teaching and research
+* Balanced object distribution with realistic backgrounds
+* Manual annotations using Roboflow's Smart Polygon Tool for precision
+
+---
+
+## 🧪 Benchmarked Models
+
+| Model        | mAP\@50 | mAP\@50–95 | Parameters (G) |
+| ------------ | ------- | ---------- | -------------- |
+| YOLOv5       | 0.991   | 0.954      | 0.071          |
+| YOLOv7       | 0.987   | 0.956      | 0.374          |
+| Faster R-CNN | 0.966   | 0.901      | 0.437          |
+| SSD          | 0.929   | 0.750      | 0.279          |
+
+> 🔎 **Observation**: YOLOv5 offered the best trade-off between accuracy and deployability.
+
+---
+
+## 📂 Repository Structure (suggested)
+
+```bash
+IoTKITs-dataset/
+├── images/              # IoT kit images
+├── labels/              # Annotations in JSON or YOLO format
+├── dataset.yaml         # Class mappings and dataset config
+├── notebooks/           # Sample training/evaluation notebooks
+└── README.md
+```
+
+---
 
 ## 🚀 Quick Start
 
 ```bash
 # Clone the repo
-git clone https://github.com/your_username/IoTKITs.git
+https://github.com/DoNguyenAnhTuan/IoTKITs-dataset.git
 
-# Sample usage with Roboflow or PyTorch
-````
+# (Optional) Install requirements
+pip install -r requirements.txt
 
-## 📝 Citation
-
-If you use this dataset, please cite:
-
+# View samples or run training notebook
+cd notebooks/
 ```
-@article{nguyen2025iotkits,
-  title={IoTKITs: A novel dataset for IoT education kit recognition},
+
+---
+
+## 📜 Citation
+
+Please cite our work if this dataset helps your research:
+
+```bibtex
+@article{do2025iotkits,
+  title={IoTKITs: A Novel Dataset for IoT Education Kit Recognition},
   author={Nguyen, Thanh-Thien and Do, Anh-Tuan Nguyen and Vu, Duc-Lung},
   journal={Data in Brief},
+  volume={60},
   year={2025},
-  publisher={Elsevier}
+  pages={111650},
+  publisher={Elsevier},
+  doi={10.1016/j.dib.2025.111650}
 }
 ```
 
-[📄 Link to the paper](https://www.sciencedirect.com/science/article/pii/S2352340925003804)
+---
 
-## 🧑‍💻 Authors
+## 🧠 License
 
-* [Anh-Tuan Nguyen Do](https://github.com/DoNguyenAnhTuan) – MSc in IT @ Lac Hong University, FabLab @ EIU
-* Collaborators: Thanh-Thien Nguyen, Duc-Lung Vu
+Dataset licensed under **Creative Commons Attribution 4.0 (CC BY 4.0)**. You may share and adapt with proper attribution.
 
-## 📜 License
+---
 
-This dataset is released under the **CC BY 4.0** license. You are free to use it for research and educational purposes.
+## 📎 Related Resources
 
-```
-
-
+* 📘 [Dataset Download - Mendeley Data](https://data.mendeley.com/datasets/x5thzmkxhy/1)
+* 🔗 [Portfolio](https://donguyenanhtuan.github.io/AnhTuan-Portfolio/)
+* 🎓 Supported by VNU-HCM (DS2024-26-03)
